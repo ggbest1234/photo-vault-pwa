@@ -32,8 +32,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                  navigator.serviceWorker.register('/sw.js');
+                navigator.serviceWorker.register('/sw.js').then((reg) => {
+                  // 检查更新
+                  reg.update();
+                  // 每 60 秒检查一次（页面打开时）
+                  setInterval(() => reg.update(), 60000);
+                  // 监听新 SW
+                  reg.addEventListener('waiting', () => {
+                    if (confirm('🆕 Photo Vault 有新版本，刷新查看？')) {
+                      reg.waiting?.postMessage({ type: 'SKIP_WAITING' });
+                      location.reload();
+                    }
+                  });
                 });
               }
             `,
