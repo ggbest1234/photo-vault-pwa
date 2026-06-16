@@ -1,0 +1,24 @@
+{
+  "name": "Photo Vault - 你的本地照片知识库",
+  "short_name": "PhotoVault",
+  "description": "拍一张照片，自动打标签，链接到 Obsidian 笔记。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
